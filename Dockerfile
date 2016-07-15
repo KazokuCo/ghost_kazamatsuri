@@ -1,2 +1,2 @@
 FROM kazokuco/ghost
-ADD monologue /srv/ghost/content/themes
+ADD monologue /srv/ghost/content/themes/monologue
