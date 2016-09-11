@@ -1,5 +1,8 @@
 FROM node:4-slim
-RUN npm install -g bower broccoli-cli && npm cache clean
-ADD monologue /monologue
-RUN cd content/themes/monologue && \
-	bower install && broccoli build assets
+RUN apt-get -qq update && apt-get -qq -y install git && apt-get clean
+RUN npm install -q -g bower broccoli-cli && npm -q cache clean
+WORKDIR /monologue
+ADD . .
+RUN npm -q install && \
+	bower --allow-root install && \
+	broccoli build assets
